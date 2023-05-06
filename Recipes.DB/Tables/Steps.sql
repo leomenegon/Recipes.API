@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Steps]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL,
+    [RecipeId] INT NOT NULL,
+    [Order] SMALLINT NOT NULL, 
+    [Description] NVARCHAR(500) NOT NULL, 
+    [Deleted] BIT NOT NULL DEFAULT 0, 
+    CONSTRAINT PK_Steps PRIMARY KEY CLUSTERED (Id),
+    CONSTRAINT FK_Steps_Recipes FOREIGN KEY (RecipeId) REFERENCES Recipes (Id)
+)
