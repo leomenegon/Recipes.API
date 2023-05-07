@@ -10,11 +10,10 @@ public static class DependencyInjectionConfiguration
     {
         services.AddSingleton<DataAccess>();
 
+        services.AddScoped<RecipeService>();
         services.AddScoped<CommonIngredientService>();
 
         services.AddScoped<RecipeData>();
-        services.AddScoped<StepData>();
-        services.AddScoped<IngredientData>();
         services.AddScoped<CommonIngredientData>();
 
         return services;

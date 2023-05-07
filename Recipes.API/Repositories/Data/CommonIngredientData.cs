@@ -13,11 +13,40 @@ public class CommonIngredientData
 
     public async Task<IEnumerable<CommonIngredientModel>> GetAll()
     {
-        return await _db.LoadData<CommonIngredientModel, dynamic>("dbo.spCommonIngredients_GetAll", new { });
+        return await _db.LoadData<CommonIngredientModel, dynamic>(
+            "dbo.spCommonIngredients_GetAll",
+            new { });
     }
     
-    public async Task Create(string name)
+    public async Task<CommonIngredientModel?> Get(int id)
     {
-        await _db.ExecuteCommand<dynamic>("dbo.spCommonIngredients_Insert", new { Name = name });
+        var query = await _db.LoadData<CommonIngredientModel, dynamic>(
+            "dbo.spCommonIngredients_Get",
+            new { Id = id });
+
+        return query.FirstOrDefault();
+    }
+    
+    public async Task<CommonIngredientModel> Create(string name)
+    {
+        var query = await _db.LoadData<CommonIngredientModel, dynamic>(
+            "dbo.spCommonIngredients_Insert",
+            new { Name = name });
+
+        return query.First();
+    }
+
+    public async Task Update(CommonIngredientModel model)
+    {
+        await _db.ExecuteCommand<dynamic>(
+            "dbo.spCommonIngredients_Insert",
+            model);
+    }
+    
+    public async Task Delete(int id)
+    {
+        await _db.ExecuteCommand<dynamic>(
+            "dbo.spCommonIngredients_Delete",
+            new { Id = id });
     }
 }

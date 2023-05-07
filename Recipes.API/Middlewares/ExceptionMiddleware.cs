@@ -26,6 +26,7 @@ public class ExceptionMiddleware
         catch (Exception ex)
         {
             _logger.LogError($"Error: {ex}");
+            //if(_environment.IsDevelopment()) throw;
             await HandleExceptionAsync(httpContext, ex);
         }
     }
@@ -34,8 +35,9 @@ public class ExceptionMiddleware
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = ex switch
         {
-            InvalidOperationException => (int)HttpStatusCode.NotFound,
+            InvalidOperationException => (int)HttpStatusCode.BadRequest,
             FormatException => (int)HttpStatusCode.BadRequest,
+            KeyNotFoundException => (int)HttpStatusCode.NotFound,
             _ => (int)HttpStatusCode.InternalServerError,
         };
 
@@ -48,6 +50,7 @@ public class ExceptionMiddleware
             {
                 InvalidOperationException => $"Ocorreu um erro durante a operação: {ex.Message}",
                 FormatException => $"Ops! Dado no formato incorreto ou ausente: {ex.Message}",
+                KeyNotFoundException => "Registro não encontrado.",
                 _ => "Desculpe, encontramos um problema interno no nosso servidor. Por favor, tente novamente mais tarde ou entre em contato com nossa equipe de suporte se o problema persistir. Agradecemos sua compreensão e paciência."
             }
         };

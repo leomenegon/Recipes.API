@@ -7,6 +7,6 @@ public static class MapsterConfiguration
 {
     public static void ConfigureMapster(this IServiceCollection services)
     {
-        TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
+        //TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
     }
 }

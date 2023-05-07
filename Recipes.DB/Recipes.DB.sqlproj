@@ -62,11 +62,11 @@
     <Folder Include="Stored Procedures\Steps" />
     <Folder Include="Stored Procedures\Ingredients" />
     <Folder Include="Stored Procedures\CommonIngredients" />
+    <Folder Include="Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Recipes.sql" />
     <Build Include="Tables\Steps.sql" />
-    <Build Include="Tables\Ingredients.sql" />
     <Build Include="Tables\CommonIngredients.sql" />
     <Build Include="Stored Procedures\Recipes\spRecipes_GetAll.sql" />
     <Build Include="Stored Procedures\Recipes\spRecipes_Get.sql" />
@@ -76,6 +76,14 @@
     <Build Include="Stored Procedures\CommonIngredients\spCommonIngredients_GetAll.sql" />
     <Build Include="Stored Procedures\Recipes\spRecipes_FindByCommonIngredient.sql" />
     <Build Include="Stored Procedures\CommonIngredients\spCommonIngredients_Insert.sql" />
+    <Build Include="Stored Procedures\Ingredients\spIngredients_InsertMany.sql" />
+    <Build Include="Types\IngredientsListType.sql" />
+    <Build Include="Types\StepsListType.sql" />
+    <Build Include="Stored Procedures\Steps\spSteps_InsertMany.sql" />
+    <Build Include="Stored Procedures\Recipes\spRecipes_Insert.sql" />
+    <Build Include="Tables\Ingredients.sql" />
+    <Build Include="Stored Procedures\Recipes\spRecipes_Update.sql" />
+    <Build Include="Stored Procedures\Recipes\spRecipes_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Recipes.DB.publish.xml" />

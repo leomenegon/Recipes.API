@@ -2,7 +2,7 @@
 	@RecipeId INT
 AS
 BEGIN
-	SELECT [Id], [RecipeId], [Order], [Description] FROM [dbo].[Steps]
-	WHERE [Deleted] = 0 AND [RecipeId] = @RecipeId
+	SELECT [RecipeId], [Order], [Description] FROM [dbo].[Steps]
+	WHERE [RecipeId] = @RecipeId
 	ORDER BY [Order]
 END

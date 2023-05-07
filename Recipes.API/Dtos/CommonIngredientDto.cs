@@ -1,5 +1,7 @@
-﻿namespace Recipes.API.ViewModels;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record CommonIngredientDto(int id, string name);
+namespace Recipes.API.Dtos;
 
-public record CreateCommonIngredientDto(string name);
+public record CommonIngredientDto(int Id, string Name);
+
+public record CreateCommonIngredientDto(string Name);
