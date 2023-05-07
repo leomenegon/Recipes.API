@@ -84,6 +84,9 @@
     <Build Include="Tables\Ingredients.sql" />
     <Build Include="Stored Procedures\Recipes\spRecipes_Update.sql" />
     <Build Include="Stored Procedures\Recipes\spRecipes_Delete.sql" />
+    <Build Include="Stored Procedures\CommonIngredients\spCommonIngredients_Delete.sql" />
+    <Build Include="Stored Procedures\CommonIngredients\SpCommonIngredient_Update.sql" />
+    <Build Include="Stored Procedures\CommonIngredients\spCommonIngredient_Get.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Recipes.DB.publish.xml" />

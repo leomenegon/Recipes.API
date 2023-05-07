@@ -58,6 +58,11 @@ public class CommonIngredientService
     
     public async Task Delete(int id)
     {
+        var entity = await _data.Get(id);
+
+        if (entity == null)
+            throw new KeyNotFoundException();
+
         await _data.Delete(id);
     }
 }

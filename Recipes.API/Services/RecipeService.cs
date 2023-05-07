@@ -76,6 +76,7 @@ public class RecipeService
         var steps = dto.Steps.Adapt<IEnumerable<RecipeStepModel>>();
         steps = steps.Select(x => { x.RecipeId = dto.Recipe.Id; return x; });
 
+        //Estou fazendo a parte lógica do update na proc para demonstrar que ambas as abordagens são possíveis
         await _data.Update(dto.Recipe.Id, dto.Recipe.Name, dto.Recipe.Description, ingredients, steps);
 
         return await Get(dto.Recipe.Id);
@@ -83,6 +84,11 @@ public class RecipeService
 
     public async Task Delete(int id)
     {
+        var entity = await _data.Get(id);
+
+        if (entity == null)
+            throw new KeyNotFoundException();
+
         await _data.Delete(id);
     }
 
@@ -103,7 +109,8 @@ public class RecipeService
         return results.Adapt<IEnumerable<RecipeDto>>();
     }
 
-
+    //Validando no serviço, tambem pode-se validar por Fluent Validation ou outras bibliotecas
+    //Decido tomar essa abordagem para não adicionar mais complexidade ao projeto
     private static bool ValidateRecipeDto(CreateRecipeRequestDto dto, out Exception? ex)
     {
         if (dto.Recipe == null
